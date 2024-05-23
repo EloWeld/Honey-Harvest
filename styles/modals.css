@@ -1,0 +1,191 @@
+/* modals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* ============= NineTile =========== */
+.pixeled-panel {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: auto 1fr auto;
+    width: 100%; /* Задайте ширину панели */
+    height: 150px; /* Задайте высоту панели */
+    position: relative;
+    pointer-events: none;
+    --panel-resolution: 25px;
+}
+
+.nine-tile-corner {
+    width: var(--panel-resolution);
+    height: var(--panel-resolution);
+}
+
+.nine-tile-edge {
+    background-size: 100% 100% !important;
+}
+.nine-tile-corner,
+.nine-tile-center {
+    background-size: cover !important;
+}
+
+.top-left {
+    background-image: url('/images/panels/market/top-left.png');
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+}
+
+.top {
+    background-image: url('/images/panels/market/top.png');
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+}
+
+.top-right {
+    background-image: url('/images/panels/market/top-right.png');
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+}
+
+.left {
+    background-image: url('/images/panels/market/left.png');
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+}
+
+.nine-tile-center {
+    background-image: url('/images/panels/market/center.png');
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+}
+
+.tile-right {
+    background-image: url('/images/panels/market/right.png');
+    grid-row: 2 / 3;
+    grid-column: 3 / 4;
+}
+
+.bottom-left {
+    background-image: url('/images/panels/market/bottom-left.png');
+    grid-row: 3 / 4;
+    grid-column: 1 / 2;
+}
+
+.bottom {
+    background: url('/images/panels/market/bottom.png');
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+}
+
+.bottom-right {
+    background: url('/images/panels/market/bottom-right.png');
+    grid-row: 3 / 4;
+    grid-column: 3 / 4;
+}
+
+/* ============= Overlay =========== */
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+
+  /* ============= Modals =========== */
+
+.modal {
+    position: absolute;
+    top: 100px;
+    bottom: 135px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 90%;
+    height: auto;
+    background: transparent;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    height: 50px;
+    align-content: center;
+    justify-content: center;
+    background: url('/images/modals/header.png') no-repeat center center;
+    background-size: cover;
+    margin-bottom: -2px;
+    padding-left: 35px;
+    padding-bottom: 35px;
+    font-size: 31px;
+    z-index: 3;
+    color: white;
+    /* Цвет текста */
+    letter-spacing: 1px;
+    text-shadow:
+        -3px -3px 0px #511B0E,
+        3px -3px 0px #511B0E,
+        -3px 3px 0px #511B0E,
+        3px 3px 0px #511B0E,
+        0px 3px 0px #511B0E,
+        3px 0px 0px #511B0E,
+        0px -3px 0px #511B0E,
+        -3px 0px 0px #511B0E,
+        -2px -2px 0px #511B0E,
+        2px -2px 0px #511B0E,
+        -2px 2px 0px #511B0E,
+        2px 2px 0px #511B0E,
+        0px 2px 0px #511B0E,
+        2px 0px 0px #511B0E,
+        0px -2px 0px #511B0E,
+        -2px 0px 0px #511B0E;
+}
+
+.modal-footer {
+    height: 50px;
+    background: url('/images/modals/footer.png') no-repeat center center;
+    background-size: cover;
+}
+
+.modal-body {
+    flex: 1;
+    padding-top: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    background: url('/images/modals/body.png') repeat-y;
+    background-size: cover;
+    overflow-y: scroll;
+    background-attachment: local;
+    position: relative;
+    overscroll-behavior: none;
+}
+
+/* Дополнительно: Стилизация скролл-бара */
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: transparent;
+}
+
+.hidden {
+    display: none;
+}

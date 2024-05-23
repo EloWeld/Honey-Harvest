@@ -1,3 +1,404 @@
+/* globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ============= Fonts =========== */
+
+@font-face {
+  font-family: 'EpilepsySans';
+  src: url('/fonts/EpilepsySans.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'EpilepsySans';
+  src: url('/fonts/EpilepsySansBold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+/* ============= Body for all =========== */
+
+body {
+  font-family: 'EpilepsySans', normal;
+}
+
+.desktop-container {
+  background: url('/images/backgrounds/screen-background.png');
+  background-size: cover;
+}
+.desktop-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px); /* Настройте уровень размытия */
+  z-index: 0;
+  pointer-events: none; /* Чтобы псевдоэлемент не блокировал события */
+}
+
+
+@layer components {
+
+  .shaded-text {
+    color: white;
+    /* Цвет текста */
+    letter-spacing: 1px;
+    text-shadow:
+      -3px -3px 0px #511B0E,
+      3px -3px 0px #511B0E,
+      -3px 3px 0px #511B0E,
+      3px 3px 0px #511B0E,
+      0px 3px 0px #511B0E,
+      3px 0px 0px #511B0E,
+      0px -3px 0px #511B0E,
+      -3px 0px 0px #511B0E,
+      -2px -2px 0px #511B0E,
+      2px -2px 0px #511B0E,
+      -2px 2px 0px #511B0E,
+      2px 2px 0px #511B0E,
+      0px 2px 0px #511B0E,
+      2px 0px 0px #511B0E,
+      0px -2px 0px #511B0E,
+      -2px 0px 0px #511B0E;
+  }
+}
+
+/* ============= Iphone Frame =========== */
+.iphone-frame {
+  @apply shadow-lg rounded-2xl border-gray-200;
+  background-color: white;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+@media (min-width: 740px) {
+  .iphone-frame {
+    @apply border-8;
+    height: 95vh;
+    aspect-ratio: 375/812;
+    width: auto;
+    overflow: hidden;
+    position: relative;
+  }
+}
+
+.text-4xl,
+.p-4 {
+  z-index: 1;
+  text-shadow:
+    -3px -3px 0px #000,
+    3px -3px 0px #000,
+    -3px 3px 0px #000,
+    3px 3px 0px #000,
+    0px 3px 0px #000,
+    3px 0px 0px #000,
+    0px -3px 0px #000,
+    -3px 0px 0px #000,
+    -2px -2px 0px #000,
+    2px -2px 0px #000,
+    -2px 2px 0px #000,
+    2px 2px 0px #000,
+    0px 2px 0px #000,
+    2px 0px 0px #000,
+    0px -2px 0px #000,
+    -2px 0px 0px #000;
+}
+
+/* ============= Side panels =========== */
+.side-panel {
+  position: absolute;
+  right: 0;
+  top: 20%;
+  /* Вы можете настроить, чтобы отрегулировать расположение панели */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* Выравнивание элементов по правому краю */
+  gap: 3vh;
+  /* Отступ между элементами */
+}
+
+.w-panel-item {
+  margin-right: -10px;
+  display: flex;
+  align-items: center;
+  background-size: 100% 100%;
+  padding: 10px;
+  /* Закругленные углы */
+}
+
+.w-panel-item-green {
+  background: url('/images/wood/wood-green-panel.png');
+  @apply w-panel-item;
+}
+
+.w-panel-item-brown {
+  background: url('/images/wood/wood-brown-panel.png');
+  @apply w-panel-item;
+}
+
+
+
+.w-panel-item:not(:disabled):hover {
+  transform: scale(1.05);
+  transform-origin: 50% 50%;
+}
+
+.w-panel-item:not(:disabled):active {
+  transform: scale(1.01);
+}
+
+.w-panel-icon {
+  width: 35px;
+  /* Размер иконок */
+  height: 35px;
+  margin-right: 12px;
+  margin-left: 12px;
+}
+
+.w-panel-span {
+  font-size: 32px;
+  /* Настроить размер шрифта */
+  color: white;
+  /* Цвет текста */
+  @apply shaded-text;
+  letter-spacing: 2px;
+  padding-right: 20px;
+}
+
+/* ============= U Statusbar =========== */
+.upper-statusbar {
+  padding-bottom: 1px;
+  padding-top: 100px;
+  padding-left: 3%;
+  padding-right: 3%;
+  z-index: 1;
+  top: -90px;
+  position: absolute;
+  height: 172px;
+  /* Фиксированная высота навигационной панели */
+  display: flex;
+  /* Для выравнивания содержимого внутри */
+  align-items: center;
+  justify-content: space-evenly;
+  width: calc(100%);
+  margin: 0 auto;
+  background: url('/images/u_statusbar/u-statusbar.png');
+  background-size: 100% 100%;
+  /* Растягивает фон на всю ширину и высоту */
+  background-repeat: no-repeat;
+}
+
+.u-nav-item {
+  display: flex;
+  gap: 3%;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  border: none;
+  /* Убираем границы кнопок */
+
+  font-size: 1.2rem;
+  /* Размер текста */
+  text-transform: uppercase;
+  @apply shaded-text;
+}
+
+.u-nav-icon {
+  margin-top: -3px;
+}
+
+.u-nav-button {
+  margin-left: 5px;
+  scale: 1.1;
+}
+
+.u-nav-button:not(:disabled):hover {
+  transform: scale(1.05);
+  transform-origin: 50% 50%;
+}
+
+.u-nav-button:not(:disabled):active {
+  transform: scale(1.01);
+}
+
+.u-nav-item img {
+  width: 35px;
+  /* Ширина изображения */
+  height: 35px;
+  /* Высота изображения */
+  margin-bottom: -3px;
+  /* Отступ снизу для текста */
+}
+
+
+/* ============= B Navbar =========== */
+
+.bottom-navbar {
+  padding-top: 15px;
+  z-index: 1;
+  bottom: 2.5%;
+  position: absolute;
+  height: 100px;
+  /* Фиксированная высота навигационной панели */
+  display: flex;
+  /* Для выравнивания содержимого внутри */
+  align-items: center;
+  justify-content: space-evenly;
+  width: calc(100% - 40px);
+  margin: 0 auto;
+  background: url('/images/b_navbar/bottom-navbar.png');
+  background-size: 100% 100%;
+  /* Растягивает фон на всю ширину и высоту */
+  background-repeat: no-repeat;
+}
+
+.b-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+  /* Убираем границы кнопок */
+  background: transparent;
+  /* Прозрачный фон для кнопок */
+  color: white;
+  /* Цвет текста */
+  font-size: 1.15rem;
+  /* Размер текста */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.b-nav-item:not(:disabled):hover {
+  transform: scale(1.05);
+  transform-origin: 50% 30%;
+}
+
+.b-nav-item:not(:disabled):active {
+  transform: scale(1.01);
+}
+
+.b-nav-item img {
+  width: 35px;
+  /* Ширина изображения */
+  height: 35px;
+  /* Высота изображения */
+  margin-bottom: -3px;
+  /* Отступ снизу для текста */
+}
+
+/* =============Screen backgrounds =========== */
+.main-background {
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  position: absolute;
+  background: url('/images/backgrounds/screen-background.png') no-repeat center center;
+  background-size: cover;
+  z-index: 0;
+}
+
+.flowers-background {
+  @apply main-background;
+  /* Применяет все стили из main-background */
+  background-image: url('/images/backgrounds/flowers-background.png');
+}
+
+.beehive-background {
+  @apply main-background;
+  /* Применяет все стили из main-background */
+  background-image: url('/images/backgrounds/beehive-background.png');
+}
+
+.beehive-background[full='true'] {
+  @apply main-background;
+  /* Применяет все стили из main-background */
+  background-image: url('/images/backgrounds/beehive-full-background.png');
+}
+
+/* ============= Gather honey =========== */
+
+.gather-honey-button {
+  background: url('/images/gather-honey-btn.png') no-repeat center;
+  background-size: 100% 100%;
+  font-size: 24.32px;
+  height: 134px;
+  width: 190px;
+  padding-bottom: 55px;
+  bottom: 12%;
+  z-index: 2;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow:
+    -3px -3px 0px #000,
+    3px -3px 0px #000,
+    -3px 3px 0px #000,
+    3px 3px 0px #000,
+    0px 3px 0px #000,
+    3px 0px 0px #000,
+    0px -3px 0px #000,
+    -3px 0px 0px #000,
+    -2px -2px 0px #000,
+    2px -2px 0px #000,
+    -2px 2px 0px #000,
+    2px 2px 0px #000,
+    0px 2px 0px #000,
+    2px 0px 0px #000,
+    0px -2px 0px #000,
+    -2px 0px 0px #000;
+}
+
+.gather-honey-button:not(:disabled):hover {
+  transform: scale(1.03);
+  transform-origin: 50% 30%;
+}
+
+.gather-honey-button:not(:disabled):active {
+  transform: scale(1.01);
+}
+
+.gather-honey-button:disabled {
+  background: url('/images/gather-honey-btn-disabled.png') no-repeat center;
+  background-size: contain;
+  @apply cursor-not-allowed;
+  color: #E5CCAE;
+  text-shadow:
+    -3px -3px 0px #876E54,
+    3px -3px 0px #876E54,
+    -3px 3px 0px #876E54,
+    3px 3px 0px #876E54,
+    0px 3px 0px #876E54,
+    3px 0px 0px #876E54,
+    0px -3px 0px #876E54,
+    -3px 0px 0px #876E54,
+    -2px -2px 0px #876E54,
+    2px -2px 0px #876E54,
+    -2px 2px 0px #876E54,
+    2px 2px 0px #876E54,
+    0px 2px 0px #876E54,
+    2px 0px 0px #876E54,
+    0px -2px 0px #876E54,
+    -2px 0px 0px #876E54;
+}
+
+/* Keyframes for fadeIn animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Applying the fadeIn animation */
+.animate-fadeIn {
+  animation: fadeIn 1s ease-in-out;
+}

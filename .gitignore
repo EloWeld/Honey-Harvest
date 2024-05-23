@@ -22,10 +22,6 @@ node_modules/
 # Next.js
 .next/
 
-# Tailwind
-tailwind.config.js
-postcss.config.js
-
 # Production
 dist/
 
