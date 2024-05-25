@@ -8,6 +8,8 @@ import RoadmapPage from './pages/RoadmapPage'
 import StakingPage from './pages/StakingPage'
 import BeesInventoryPage from './pages/BeesInventoryPage'
 import Bee from './Bee'
+import MarketPage from './pages/MarketPage'
+import InfoPage from './pages/InfoPage'
 
 const MobileInterface = () => {
   const [user, setUserData] = useState({
@@ -177,81 +179,8 @@ const MobileInterface = () => {
             Profile
           </button>
         </div>
-        {page === 'market' && (
-          <div className='modal'>
-            <div className='modal-header'>Market</div>
-            <div className='modal-body'>
-              <MarketItemPanel
-                image='/images/bees/bee_v1.png'
-                name='Bee'
-                ton='1.4'
-                honey='10'
-                price='2'
-                quality='Regular'
-              />
-              <MarketItemPanel
-                image='/images/bees/bee_v2.png'
-                name='Bee v2'
-                ton='1.8'
-                honey='15'
-                price='3'
-                quality='Common'
-              />
-              <MarketItemPanel
-                image='/images/bees/bee_v3.png'
-                name='Bee v3'
-                ton='2.2'
-                honey='20'
-                price='5'
-                quality='Rare'
-              />
-              <MarketItemPanel
-                image='/images/bees/bee_v4.png'
-                name='Bee v4'
-                ton='2.6'
-                honey='25'
-                price='10'
-                quality='Very rare'
-              />
-              <MarketItemPanel
-                image='/images/bees/bee_v5.png'
-                name='Bee v5'
-                ton='3.0'
-                honey='50'
-                price='20'
-                quality='Epic'
-              />
-              <MarketItemPanel
-                image='/images/bees/bee_v6.png'
-                name='Зря я сюда полез'
-                ton='30.0'
-                honey='500'
-                price='200'
-                quality='Legendary'
-              />
-            </div>
-            <div className='modal-footer'></div>
-          </div>
-        )}
-        {page === 'info' && (
-          <div className='modal'>
-            <div className='modal-header'>Info</div>
-            <div className='modal-body'>
-              <h2 className='text-5xl text-center'>Куча текста</h2>
-              <h2 className='text-5xl text-center'>Куча текста</h2>
-              <h2 className='text-5xl text-center'>Куча текста</h2>
-              <button className='mx-10 h-6' onClick={openRoadmap}>
-                <PixelPanel
-                  className='relative flex items-center justify-center'
-                  resolution='35px'
-                >
-                  <OutlinedText text='ROADMAP' />
-                </PixelPanel>
-              </button>
-            </div>
-            <div className='modal-footer'></div>
-          </div>
-        )}
+        {page === 'market' && <MarketPage user={user} />}
+        {page === 'info' && <InfoPage openRoadmap={openRoadmap} />}
         {page === 'staking' && <StakingPage back={closeModal} />}
         {page === 'roadmap' && <RoadmapPage roadmapBack={roadmapBack} />}
         {page === 'profile' && <ProfilePage />}
