@@ -24,6 +24,8 @@ node_modules/
 
 # Production
 dist/
+venv/
+.venv/
 
 # Miscellaneous
 .DS_Store
