@@ -3,6 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 /* ============= Fonts =========== */
 
 @font-face {
@@ -19,6 +21,7 @@
 
 /* ============= Body for all =========== */
 
+
 body {
   font-family: 'EpilepsySans', normal;
 }
@@ -27,6 +30,7 @@ body {
   background: url('/images/backgrounds/screen-background.png');
   background-size: cover;
 }
+
 .desktop-container::before {
   content: '';
   position: absolute;
@@ -34,9 +38,10 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(10px); /* Настройте уровень размытия */
+  backdrop-filter: blur(10px);
+  /* Настройте уровень размытия */
   z-index: 0;
-  pointer-events: none; /* Чтобы псевдоэлемент не блокировал события */
+  pointer-events: none;
 }
 
 
@@ -64,11 +69,61 @@ body {
       0px -2px 0px #511B0E,
       -2px 0px 0px #511B0E;
   }
+
+
+  .outlined-text {
+    position: relative;
+    color: white;
+    /* Цвет текста */
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-shadow: none;
+    z-index: 2;
+
+  }
+
+  .outlined-text::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    color: #511B0E;
+    /* Цвет обводки */
+    -webkit-text-stroke: var(--text-stroke, 4px #511B0E);
+    /* Толщина обводки и цвет */
+  }
+
+  .outline-centered {
+    position: relative;
+    color: white;
+    /* Цвет текста */
+    letter-spacing: 1px;
+    width: 100%;
+    font-weight: bold;
+    text-shadow: none;
+    z-index: 2;
+  }
+
+  .outline-centered::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    color: #511B0E;
+    /* Цвет обводки */
+    -webkit-text-stroke: var(--text-stroke, 4px #511B0E);
+    /* Толщина обводки и цвет */
+  }
+
 }
 
 /* ============= Iphone Frame =========== */
 .iphone-frame {
-  @apply shadow-lg rounded-2xl border-gray-200;
+  @apply shadow-lg border-gray-200;
   background-color: white;
   width: 100%;
   height: 100vh;
@@ -77,7 +132,7 @@ body {
 
 @media (min-width: 740px) {
   .iphone-frame {
-    @apply border-8;
+    @apply border-8 rounded-2xl;
     height: 95vh;
     aspect-ratio: 375/812;
     width: auto;
@@ -118,7 +173,7 @@ body {
   flex-direction: column;
   align-items: flex-end;
   /* Выравнивание элементов по правому краю */
-  gap: 3vh;
+  gap: 2vh;
   /* Отступ между элементами */
 }
 
@@ -127,28 +182,29 @@ body {
   display: flex;
   align-items: center;
   background-size: 100% 100%;
-  padding: 10px;
+  padding: 8px;
   /* Закругленные углы */
 }
 
 .w-panel-item-green {
   background: url('/images/wood/wood-green-panel.png');
   @apply w-panel-item;
+  z-index: 3;
 }
 
 .w-panel-item-brown {
   background: url('/images/wood/wood-brown-panel.png');
   @apply w-panel-item;
+  z-index: 3;
 }
 
 
-
-.w-panel-item:not(:disabled):hover {
+.silly-scale:not(:disabled):hover {
   transform: scale(1.05);
   transform-origin: 50% 50%;
 }
 
-.w-panel-item:not(:disabled):active {
+.silly-scale:not(:disabled):hover {
   transform: scale(1.01);
 }
 
@@ -214,7 +270,7 @@ body {
 
 .u-nav-button {
   margin-left: 5px;
-  scale: 1.1;
+  scale: 1.0;
 }
 
 .u-nav-button:not(:disabled):hover {
@@ -227,11 +283,11 @@ body {
 }
 
 .u-nav-item img {
-  width: 35px;
+  width: 100%;
   /* Ширина изображения */
-  height: 35px;
+  height: 100%;
   /* Высота изображения */
-  margin-bottom: -3px;
+  /* margin-bottom: -3px; */
   /* Отступ снизу для текста */
 }
 
@@ -329,7 +385,7 @@ body {
   background-size: 100% 100%;
   font-size: 24.32px;
   height: 134px;
-  width: 190px;
+  width: min(190px, 80%);
   padding-bottom: 55px;
   bottom: 12%;
   z-index: 2;

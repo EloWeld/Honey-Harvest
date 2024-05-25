@@ -1,66 +1,162 @@
 // components/MobileInterface.js
-import React, { useState } from 'react';
-import PixelPanel from './PixelPanel';
-import MarketItemPanel from './MarketItemPanel';
+import React, { useState } from 'react'
+import PixelPanel from './PixelPanel'
+import MarketItemPanel from './MarketItemPanel'
+import OutlinedText from './OutlinedText'
+import ProfilePage from './pages/ProfilePage'
+import RoadmapPage from './pages/RoadmapPage'
+import StakingPage from './pages/StakingPage'
+import BeesInventoryPage from './pages/BeesInventoryPage'
+import Bee from './Bee'
 
 const MobileInterface = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isMarketOpen, setIsMarketOpen] = useState(false);
+  const [user, setUserData] = useState({
+    honeyReady: true,
+    tonWallet: false,
+    balanceTON: 12.23,
+    balanceHoney: 155.2,
+    earnedTON: 10,
+    referralsCount: 3,
+    inviteLink: 'https://t.me/ArturTestionBbot/arturtest',
+    activeBeeId: 'asdojn1-sdf',
+    bees: [
+      { id: 'asdojn1-sdf', type: 'bee_v3' },
+      { id: 'asdojn2-sdf', type: 'bee_v1' }
+    ]
+  })
+  const [page, setPage] = useState(null)
 
-  
+  const openMarket = () => setPage('market')
 
-  const openMarket = () => {
-    setIsModalOpen(true);
-    setIsMarketOpen(true);
-  };
+  const openInfo = () => setPage('info')
 
-  const closeModal = () => {
-    setIsMarketOpen(false)
-    setIsModalOpen(false);
-  };
+  const openRoadmap = () => setPage('roadmap')
+
+  const roadmapBack = () => openInfo()
+
+  const openProfile = () => setPage('profile')
+
+  const closeModal = () => setPage(null)
+
+  const openBeesInventory = () => setPage('bees')
+
+  const openStaking = () => setPage('staking')
+
+  const gatherHoney = () => {
+    setUserData({
+      ...user,
+      honeyReady: false
+    })
+  }
 
   return (
     <div className='min-h-screen flex items-center justify-center desktop-container'>
       <div className='iphone-frame overflow-hidden flex flex-col items-center justify-center'>
-        <div className={`overlay ${isModalOpen ? 'active' : ''}`} onClick={closeModal}></div>
+        <div
+          className={`overlay ${
+            page != null && page != 'bees' ? 'active' : ''
+          }`}
+          onClick={closeModal}
+        ></div>
+        {page == null && (
+          <div className='absolute w-full h-screen overflow-hidden'>
+            <Bee
+              imageUrl='/images/bees_animated/bee_v1.gif'
+              scale={0.8}
+              startPoint={{ x: 100, y: 450 }}
+              startAngle={-10}
+              speed={0.03}
+              distance={0.1}
+            />
+            <Bee
+              imageUrl='/images/bees_animated/bee_v1.gif'
+              scale={0.5}
+              startPoint={{ x: 95, y: 250 }}
+              startAngle={0}
+              speed={0.04}
+              distance={0.05}
+            />
+            <Bee
+              imageUrl='/images/bees_animated/bee_v1.gif'
+              scale={0.3}
+              startPoint={{ x: 260, y: 320 }}
+              startAngle={-15}
+              speed={0.06}
+              distance={0.06}
+            />
+          </div>
+        )}
         <div className='main-background'></div>
-        <div className='beehive-background' full='false'></div>
+        <div
+          className='beehive-background'
+          full={user.honeyReady ? 'true' : 'false'}
+        ></div>
         <div className='flowers-background'></div>
-        <button className={`absolute gather-honey-button ${isModalOpen ? 'hidden' : ''}`}>
+        <button
+          disabled={!user.honeyReady}
+          onClick={gatherHoney}
+          className={`absolute gather-honey-button ${page ? 'hidden' : ''}`}
+        >
           Gather honey!
         </button>
         <div className='upper-statusbar'>
           <div className='u-nav-item'>
-            <img
-              className='u-nav-icon'
-              src='/images/u_statusbar/ton-icon.png'
-              alt='TON'
-            />
-            <h3>12.22</h3>
-            <button className='u-nav-button'>
-              <img src='/images/u_statusbar/plus-icon.png' alt='PLUS' />
+            <div className='w-10 h-10'>
+              <img
+                className='u-nav-icon'
+                src='/images/u_statusbar/ton-icon.png'
+                alt='TON'
+              />
+            </div>
+            <OutlinedText text={user.balanceTON} />
+            <button className='u-nav-button w-10 h-10'>
+              <img
+                className='mx-0 my-auto'
+                src='/images/u_statusbar/plus-icon.png'
+                alt='PLUS'
+              />
             </button>
           </div>
           <div className='u-nav-item'>
-            <img
-              className='u-nav-icon'
-              src='/images/icons/honey.png'
-              alt='HONEY'
-            />
-            <h3>1.22</h3>
-            <button className='u-nav-button'>
-              <img src='/images/u_statusbar/plus-icon.png' alt='PLUS' />
+            <div className='w-10 h-10'>
+              <img
+                className='u-nav-icon'
+                src='/images/icons/koks.png'
+                alt='HONEY'
+              />
+            </div>
+            <OutlinedText text={user.balanceHoney} />
+            <button className='u-nav-button w-10 h-10'>
+              <img
+                className='mx-0 my-auto'
+                src='/images/u_statusbar/plus-icon.png'
+                alt='PLUS'
+              />
             </button>
           </div>
         </div>
-        <div className={`side-panel ${isModalOpen ? 'hidden' : ''}`}>
-          <button className="w-panel-item-brown">
-            <img className="w-panel-icon" src="/images/icons/cupboard.png" alt="My bees" />
-            <span className='w-panel-span' >My bees</span>
+        <div className={`side-panel ${page ? 'hidden' : ''}`}>
+          <button
+            className='w-panel-item-brown silly-scale'
+            onClick={openBeesInventory}
+          >
+            <img
+              className='w-panel-icon'
+              src='/images/icons/cupboard.png'
+              alt='My bees'
+            />
+            <span className='w-panel-span'>My bees</span>
           </button>
-          <button className="w-panel-item-green">
-            <img className="w-panel-icon" src="/images/icons/bank.png" alt="Staking" />
-            <span className='w-panel-span' >Staking</span>
+          <button
+            className='w-panel-item-green silly-scale'
+            onClick={openStaking}
+          >
+            <img
+              className='w-panel-icon'
+              src='/images/icons/bank.png'
+              alt='Staking'
+            />
+            <span className='w-panel-span'>Staking</span>
           </button>
         </div>
         <div className='bottom-navbar'>
@@ -68,7 +164,7 @@ const MobileInterface = () => {
             <img src='/images/b_navbar/market-icon.png' alt='Market' />
             Market
           </button>
-          <button className='b-nav-item'>
+          <button className='b-nav-item' onClick={openInfo}>
             <img src='/images/b_navbar/info-icon.png' alt='Info' />
             Info
           </button>
@@ -76,46 +172,90 @@ const MobileInterface = () => {
             <img src='/images/b_navbar/home-icon.png' alt='Home' />
             Home
           </button>
-          <button className='b-nav-item'>
+          <button className='b-nav-item' onClick={openProfile}>
             <img src='/images/b_navbar/profile-icon.png' alt='Profile' />
             Profile
           </button>
         </div>
-        {isMarketOpen && (
+        {page === 'market' && (
           <div className='modal'>
-            <div className='modal-header'>
-              Market
-            </div>
+            <div className='modal-header'>Market</div>
             <div className='modal-body'>
-            <MarketItemPanel
-              image="/images/bees/bee_v1.png"
-              name="Bee"
-              ton="1.4"
-              honey="10"
-              price="2"
-              quality="Regular"
-            />
-            <MarketItemPanel
-              image="/images/bees/bee_v2.png"
-              name="Bee v2"
-              ton="1.8"
-              honey="15"
-              price="3"
-              quality="Common"
-            />
-            <MarketItemPanel
-              image="/images/bees/bee_v3.png"
-              name="Bee v3"
-              ton="1.4"
-              honey="10"
-              price="2"
-              quality="Regular"
-            />
+              <MarketItemPanel
+                image='/images/bees/bee_v1.png'
+                name='Bee'
+                ton='1.4'
+                honey='10'
+                price='2'
+                quality='Regular'
+              />
+              <MarketItemPanel
+                image='/images/bees/bee_v2.png'
+                name='Bee v2'
+                ton='1.8'
+                honey='15'
+                price='3'
+                quality='Common'
+              />
+              <MarketItemPanel
+                image='/images/bees/bee_v3.png'
+                name='Bee v3'
+                ton='2.2'
+                honey='20'
+                price='5'
+                quality='Rare'
+              />
+              <MarketItemPanel
+                image='/images/bees/bee_v4.png'
+                name='Bee v4'
+                ton='2.6'
+                honey='25'
+                price='10'
+                quality='Very rare'
+              />
+              <MarketItemPanel
+                image='/images/bees/bee_v5.png'
+                name='Bee v5'
+                ton='3.0'
+                honey='50'
+                price='20'
+                quality='Epic'
+              />
+              <MarketItemPanel
+                image='/images/bees/bee_v6.png'
+                name='Зря я сюда полез'
+                ton='30.0'
+                honey='500'
+                price='200'
+                quality='Legendary'
+              />
             </div>
             <div className='modal-footer'></div>
           </div>
         )}
-
+        {page === 'info' && (
+          <div className='modal'>
+            <div className='modal-header'>Info</div>
+            <div className='modal-body'>
+              <h2 className='text-5xl text-center'>Куча текста</h2>
+              <h2 className='text-5xl text-center'>Куча текста</h2>
+              <h2 className='text-5xl text-center'>Куча текста</h2>
+              <button className='mx-10 h-6' onClick={openRoadmap}>
+                <PixelPanel
+                  className='relative flex items-center justify-center'
+                  resolution='35px'
+                >
+                  <OutlinedText text='ROADMAP' />
+                </PixelPanel>
+              </button>
+            </div>
+            <div className='modal-footer'></div>
+          </div>
+        )}
+        {page === 'staking' && <StakingPage back={closeModal} />}
+        {page === 'roadmap' && <RoadmapPage roadmapBack={roadmapBack} />}
+        {page === 'profile' && <ProfilePage />}
+        {page === 'bees' && <BeesInventoryPage />}
       </div>
     </div>
   )
