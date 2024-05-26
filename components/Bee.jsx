@@ -58,19 +58,25 @@ const Bee = ({ imageUrl, scale = 1, speed, distance, hiveCoordinates = { x: 263,
     const keyframes = `
       @keyframes ${uniqueAnimationName} {
         0% {
-          transform: translateX(0) scale(${scale}, ${scale});
+          transform: translateX(0) scale(${scale}, ${scale}) rotate(-12deg);
+        }
+        25% {
+          transform: translate(${distance/2}px, ${distance*-1/4}px) scale(${scale}, ${scale});
         }
         46% {
-          transform: translateX(${distance}px) scale(${scale}, ${scale});
+          transform: translateX(${distance}px) scale(${scale}, ${scale}) rotate(12deg);
         }
         50% {
-          transform: translateX(${distance}px) scale(-${scale}, ${scale});
+          transform: translateX(${distance}px) scale(-${scale}, ${scale}) rotate(-12deg);
+        }
+        75% {
+          transform: translate(${distance/2}px, ${distance*-1/4}px) scale(-${scale}, ${scale});
         }
         96% {
-          transform: translateX(0) scale(-${scale}, ${scale});
+          transform: translateX(0) scale(-${scale}, ${scale}) rotate(12deg);
         }
         100% {
-          transform: translateX(0) scale(${scale}, ${scale});
+          transform: translateX(0) scale(${scale}, ${scale}) rotate(-12deg);
         }
       }
     `;
@@ -94,7 +100,7 @@ const Bee = ({ imageUrl, scale = 1, speed, distance, hiveCoordinates = { x: 263,
         backgroundSize: '100% 100%',
         zIndex: 1,
         transform: `translate(-50%, -50%)`,
-        animation: `${animationName} ${100 / (speed)}s linear infinite`
+        animation: `${animationName} ${100 / (speed)}s linear infinite`,
       }}
     ></div>
   );

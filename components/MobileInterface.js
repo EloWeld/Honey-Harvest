@@ -124,23 +124,23 @@ const MobileInterface = () => {
             <Bee
               imageUrl='/images/bees_animated/bee_v1.gif'
               scale={1.4}
-              speed={25}
+              speed={15}
               distance={80}
-              hiveCoordinates={{ x: 180, y: 1320 }} // Координаты улья относительно изображения фона
+              hiveCoordinates={{ x: 180, y: 1350 }} // Координаты улья относительно изображения фона
             />
             <Bee
               imageUrl='/images/bees_animated/bee_v1.gif'
               scale={1}
-              speed={40}
+              speed={20}
               distance={55}
-              hiveCoordinates={{ x: 83, y: 1070 }} // Координаты улья относительно изображения фона
+              hiveCoordinates={{ x: 75, y: 1100 }} // Координаты улья относительно изображения фона
             />
             <Bee
               imageUrl='/images/bees_animated/bee_v1.gif'
               scale={0.7}
-              speed={37}
+              speed={25}
               distance={40}
-              hiveCoordinates={{ x: 580, y: 1050 }} // Координаты улья относительно изображения фона
+              hiveCoordinates={{ x: 570, y: 1070 }} // Координаты улья относительно изображения фона
             />
             
           </div>
