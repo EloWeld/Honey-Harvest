@@ -22,10 +22,69 @@ const MobileInterface = () => {
     inviteLink: 'https://t.me/ArturTestionBbot/arturtest',
     activeBeeId: 'asdojn1-sdf',
     bees: [
-      { id: 'asdojn1-sdf', type: 'bee_v3' },
-      { id: 'asdojn2-sdf', type: 'bee_v1' }
+      { id: 'asdojn4jkwfnjsfsdf', type: 'bee_v6' },
+      { id: 'asdojn4-sdf', type: 'bee_v4' },
+      { id: 'asdojn3-sdf', type: 'bee_v3' },
+      { id: 'asdojn2-sdf', type: 'bee_v1' },
     ]
   })
+  const market = [
+    {
+      id: 'bee_v1',
+      image: '/images/bees/bee_v1.png',
+      name: 'Bee',
+      ton: '1.4',
+      honey: '10',
+      price: '2',
+      quality: 'Regular'
+    },
+    {
+      id: 'bee_v2',
+      image: '/images/bees/bee_v2.png',
+      name: 'Bee v2',
+      ton: '1.8',
+      honey: '15',
+      price: '3',
+      quality: 'Common'
+    },
+    {
+      id: 'bee_v3',
+      image: '/images/bees/bee_v3.png',
+      name: 'Bee v3',
+      ton: '2.2',
+      honey: '20',
+      price: '5',
+      quality: 'Rare'
+    },
+    {
+      id: 'bee_v4',
+      image: '/images/bees/bee_v4.png',
+      name: 'Bee v4',
+      ton: '2.6',
+      honey: '25',
+      price: '10',
+      quality: 'Very rare'
+    },
+    {
+      id: 'bee_v5',
+      image: '/images/bees/bee_v5.png',
+      name: 'Bee v5',
+      ton: '3.0',
+      honey: '50',
+      price: '20',
+      quality: 'Epic'
+    },
+    {
+      id: 'bee_v6',
+      image: '/images/bees/bee_v6.png',
+      name: 'Зря я сюда полез',
+      ton: '30.0',
+      honey: '500',
+      price: '200',
+      quality: 'Legendary'
+    }
+  ];
+
   const [page, setPage] = useState(null)
 
   const openMarket = () => setPage('market')
@@ -179,12 +238,12 @@ const MobileInterface = () => {
             Profile
           </button>
         </div>
-        {page === 'market' && <MarketPage user={user} />}
+        {page === 'market' && <MarketPage user={user} market={market} />}
         {page === 'info' && <InfoPage openRoadmap={openRoadmap} />}
         {page === 'staking' && <StakingPage back={closeModal} />}
         {page === 'roadmap' && <RoadmapPage roadmapBack={roadmapBack} />}
-        {page === 'profile' && <ProfilePage />}
-        {page === 'bees' && <BeesInventoryPage />}
+        {page === 'profile' && <ProfilePage user={user} />}
+        {page === 'bees' && <BeesInventoryPage user={user} market={market} />}
       </div>
     </div>
   )

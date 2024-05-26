@@ -10,21 +10,67 @@ const BeePot = ({ data }) => {
     );
 }
 
-const BeesInventoryPage = () => {
+const BeesInventoryPage = ({ user, market }) => {
+    function extendArrayToEvenSize(arr) {
+        let currentLength = arr.length;
+        let newLength = currentLength;
+
+        // Ensure the length is at least 6
+        if (currentLength < 6) {
+            newLength = 6;
+        }
+
+        // Ensure the length is even
+        if (newLength % 2 !== 0) {
+            newLength += 1;
+        }
+
+        const extendedArray = arr.slice(); // Copy the original array
+
+        // Add elements to the array until it reaches the new length
+        for (let i = currentLength; i < newLength; i++) {
+            extendedArray.push({ id: 'empty' });
+        }
+
+        return extendedArray;
+    }
+
+    const inventory = extendArrayToEvenSize(user.bees);
+    
+    // Group inventory items into rows of 2
+    const inventoryRows = [];
+    for (let i = 0; i < inventory.length; i += 2) {
+        inventoryRows.push(inventory.slice(i, i + 2));
+    }
+
     return (
-        <div className="w-full h-full" style={{ zIndex: "0", background: 'url("/images/backgrounds/inventory-background.png")', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' }}>
-            <div className="relative w-full h-4/5 px-12" style={{ marginTop: "80px", background: 'url("/images/backgrounds/shelfs.png")', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' }}>
-                <div className="grid grid-rows-3 grid-cols-2 gap-20 px-7 pt-7">
-                    <BeePot data={{ empty: false, bee: 'bee_v1' }} />
-                    <BeePot data={{ empty: false }} />
-                    <BeePot data={{ empty: true }} />
-                    <BeePot data={{ empty: false }} />
-                    <BeePot data={{ empty: true }} />
-                    <BeePot data={{ empty: true }} />
-                </div>
+        // <div className="w-full h-full overflow-y-auto" style={{ zIndex: '0', background: 'url("/images/backgrounds/inventory-background.png")', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' }}>
+        //     {inventoryRows.map((row, rowIndex) => (
+        //         <div key={rowIndex} className="relative w-full h-auto px-12 py-30">
+        //             <div className="grid grid-cols-2 gap-20 px-7 pt-7">
+        //                 {row.map((item, index) => (
+        //                     <BeePot key={index} data={{ empty: item.id === 'empty', bee: item.type }} />
+        //                 ))}
+        //             </div>
+        //             <div className="w-full h-16 bg-no-repeat bg-center" style={{ backgroundImage: 'url("/images/backgrounds/shelf.png")', backgroundSize: '100% 100%'}}></div>
+        //         </div>
+        //     ))}
+        // </div>
+        <div className="w-full h-full overflow-y-auto" style={{ zIndex: '0', background: 'url("/images/backgrounds/inventory-background.png")', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' }}>
+            <div className="relative w-full h-auto px-12 pt-32 pb-40">
+                {inventoryRows.map((row, rowIndex) => (
+                    <div key={rowIndex} className="relative w-full mb-10 pt-5 pb-14 px-5" style={{ backgroundImage: 'url("/images/backgrounds/shelf.png")', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' }}>
+                        <div className="flex justify-around">
+                            {row.map((item, index) => (
+                                <BeePot key={index} data={{ empty: item.id === 'empty', bee: item.type }} />
+                            ))}
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );
-}
+};
+
 
 export default BeesInventoryPage;
