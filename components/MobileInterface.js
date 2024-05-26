@@ -123,28 +123,26 @@ const MobileInterface = () => {
           <div className='absolute w-full h-screen overflow-hidden'>
             <Bee
               imageUrl='/images/bees_animated/bee_v1.gif'
-              scale={0.8}
-              startPoint={{ x: 100, y: 450 }}
-              startAngle={-10}
-              speed={0.03}
-              distance={0.1}
+              scale={1.4}
+              speed={25}
+              distance={80}
+              hiveCoordinates={{ x: 180, y: 1320 }} // Координаты улья относительно изображения фона
             />
             <Bee
               imageUrl='/images/bees_animated/bee_v1.gif'
-              scale={0.5}
-              startPoint={{ x: 95, y: 250 }}
-              startAngle={0}
-              speed={0.04}
-              distance={0.05}
+              scale={1}
+              speed={40}
+              distance={55}
+              hiveCoordinates={{ x: 83, y: 1070 }} // Координаты улья относительно изображения фона
             />
             <Bee
               imageUrl='/images/bees_animated/bee_v1.gif'
-              scale={0.3}
-              startPoint={{ x: 260, y: 320 }}
-              startAngle={-15}
-              speed={0.06}
-              distance={0.06}
+              scale={0.7}
+              speed={37}
+              distance={40}
+              hiveCoordinates={{ x: 580, y: 1050 }} // Координаты улья относительно изображения фона
             />
+            
           </div>
         )}
         <div className='main-background'></div>

@@ -155,7 +155,7 @@
     padding-left: 25px;
     padding-right: 25px;
     background: url('/images/modals/body.png') repeat-y;
-    background-size: cover;
+    background-size: 100%;
     overflow-y: scroll;
     background-attachment: local;
     position: relative;

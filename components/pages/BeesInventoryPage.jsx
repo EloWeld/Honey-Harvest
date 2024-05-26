@@ -44,18 +44,6 @@ const BeesInventoryPage = ({ user, market }) => {
     }
 
     return (
-        // <div className="w-full h-full overflow-y-auto" style={{ zIndex: '0', background: 'url("/images/backgrounds/inventory-background.png")', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' }}>
-        //     {inventoryRows.map((row, rowIndex) => (
-        //         <div key={rowIndex} className="relative w-full h-auto px-12 py-30">
-        //             <div className="grid grid-cols-2 gap-20 px-7 pt-7">
-        //                 {row.map((item, index) => (
-        //                     <BeePot key={index} data={{ empty: item.id === 'empty', bee: item.type }} />
-        //                 ))}
-        //             </div>
-        //             <div className="w-full h-16 bg-no-repeat bg-center" style={{ backgroundImage: 'url("/images/backgrounds/shelf.png")', backgroundSize: '100% 100%'}}></div>
-        //         </div>
-        //     ))}
-        // </div>
         <div className="w-full h-full overflow-y-auto" style={{ zIndex: '0', background: 'url("/images/backgrounds/inventory-background.png")', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' }}>
             <div className="relative w-full h-auto px-12 pt-32 pb-40">
                 {inventoryRows.map((row, rowIndex) => (
