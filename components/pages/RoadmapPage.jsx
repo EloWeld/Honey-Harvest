@@ -4,7 +4,7 @@ import OutlinedText from '../OutlinedText'
 const SquarePoint = ({ point, text }) => {
     return (
         <div className='flex flex-row items-center gap-4 px-4'>
-            <div className='h-14 aspect-square w-14 content-center justify-center' style={{ backgroundImage: "url('/images/panels/square.png')", backgroundSize: "100% 100%" }}>
+            <div className='h-10 sm:h-14 aspect-square content-center justify-center' style={{ backgroundImage: "url('/images/panels/square.png')", backgroundSize: "100% 100%" }}>
                 <OutlinedText className='text-lg outline-centered text-center' text={point} centered={true}/>
             </div>
             <OutlinedText text={text} />

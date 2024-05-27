@@ -296,7 +296,7 @@ body {
 
 .bottom-navbar {
   padding-top: 15px;
-  z-index: 1;
+  z-index: 2;
   bottom: 2.5%;
   position: absolute;
   height: 100px;
