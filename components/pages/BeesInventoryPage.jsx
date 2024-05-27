@@ -2,7 +2,7 @@ import React from 'react';
 
 const BeePot = ({ data }) => {
     return (
-        <div className="relative w-28 mx-auto" style={{ aspectRatio: 500/728, zIndex: "0", background: data.empty ? 'url("/images/icons/bee-pot-empty.png")' : 'url("/images/icons/bee-pot-full.png")', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' }}>
+        <div className="relative w-20 sm:w-24 md:w-28 mx-auto" style={{ aspectRatio: 500/728, zIndex: "0", background: data.empty ? 'url("/images/icons/bee-pot-empty.png")' : 'url("/images/icons/bee-pot-full.png")', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' }}>
             {data.bee && (
                 <img className='opacity-50 -rotate-12 p-4 pb-0 mt-10' src={`/images/bees/${data.bee}.png`}></img>
             )}

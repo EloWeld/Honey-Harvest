@@ -204,7 +204,7 @@ const MobileInterface = () => {
               src='/images/icons/cupboard.png'
               alt='My bees'
             />
-            <span className='w-panel-span'>My bees</span>
+            <OutlinedText className='w-panel-span' text={"My bees"}></OutlinedText>
           </button>
           <button
             className='w-panel-item-green silly-scale'
@@ -215,7 +215,7 @@ const MobileInterface = () => {
               src='/images/icons/bank.png'
               alt='Staking'
             />
-            <span className='w-panel-span'>Staking</span>
+            <OutlinedText className='w-panel-span' text={"Staking"}></OutlinedText>
           </button>
         </div>
         <div className='bottom-navbar'>

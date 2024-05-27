@@ -217,11 +217,10 @@ body {
 }
 
 .w-panel-span {
-  font-size: 32px;
+  font-size: 1.5rem;
   /* Настроить размер шрифта */
   color: white;
   /* Цвет текста */
-  @apply shaded-text;
   letter-spacing: 2px;
   padding-right: 20px;
 }
