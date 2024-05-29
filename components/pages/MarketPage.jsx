@@ -1,10 +1,11 @@
 import MarketItemPanel from "../MarketItemPanel";
+import OutlinedText from "../OutlinedText";
 
 function MarketPage({user, market}) {
     // I dont know why we need user but anyway
     return (
         <div className='modal'>
-            <div className='modal-header'>Market</div>
+            <div className='modal-header'><OutlinedText className="tstroke-5" text={"Market"}/></div>
             <div className='modal-body'>
                 {market.map((item, index) => (
                     <MarketItemPanel

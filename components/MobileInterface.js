@@ -156,7 +156,7 @@ const MobileInterface = () => {
           onClick={gatherHoney}
           className={`absolute gather-honey-button ${page ? 'hidden' : ''}`}
         >
-          Gather honey!
+          <OutlinedText centered={true} className="neg-letter-spacing" stroke='4px black' text={"Gather honey!"}/>
         </button>
         <div className='upper-statusbar'>
           <div className='u-nav-item'>

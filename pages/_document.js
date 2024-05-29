@@ -6,6 +6,7 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+          <meta name="viewport" content="width=532, initial-scale=0.7" />
         </Head>
         <body>
           <Main />

@@ -16,7 +16,7 @@ const RoadmapPage = ({ roadmapBack }) => {
     return (
         <div className='modal'>
             <div className='modal-header'>
-                Roadmap
+            <OutlinedText className="tstroke-5" text={"Roadmap"}/>
                 <button className='u-nav-button h-full' onClick={roadmapBack}>
                     <img className="h-4/6" src='/images/icons/back.png' alt='BACK' />
                 </button>
