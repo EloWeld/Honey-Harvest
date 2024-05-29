@@ -156,19 +156,19 @@ const MobileInterface = () => {
           onClick={gatherHoney}
           className={`absolute gather-honey-button ${page ? 'hidden' : ''}`}
         >
-          <OutlinedText centered={true} className="neg-letter-spacing" stroke='4px black' text={"Gather honey!"}/>
+          <OutlinedText centered={true} className="text-lg zero-letter-spacing whitespace-nowrap" stroke='4px black' text={"Gather honey!"}/>
         </button>
         <div className='upper-statusbar'>
           <div className='u-nav-item'>
-            <div className='w-10 h-10'>
+            <div className='w-7 h-7 sm:w-9 sm:h-9'>
               <img
-                className='u-nav-icon'
+                className=''
                 src='/images/u_statusbar/ton-icon.png'
                 alt='TON'
               />
             </div>
-            <OutlinedText text={user.balanceTON} />
-            <button className='u-nav-button w-10 h-10'>
+            <OutlinedText className="text-base sm:text-sm" text={user.balanceTON} />
+            <button className='u-nav-button w-8 h-8 sm:w-10 sm:h-10'>
               <img
                 className='mx-0 my-auto'
                 src='/images/u_statusbar/plus-icon.png'
@@ -177,15 +177,15 @@ const MobileInterface = () => {
             </button>
           </div>
           <div className='u-nav-item'>
-            <div className='w-10 h-10'>
+            <div className='w-8 h-8 sm:w-10 sm:h-10'>
               <img
-                className='u-nav-icon'
+                className=''
                 src='/images/icons/koks.png'
                 alt='HONEY'
               />
             </div>
-            <OutlinedText text={user.balanceHoney} />
-            <button className='u-nav-button w-10 h-10'>
+            <OutlinedText className="text-base sm:text-sm" text={user.balanceHoney} />
+            <button className='u-nav-button w-8 h-8 sm:w-10 sm:h-10'>
               <img
                 className='mx-0 my-auto'
                 src='/images/u_statusbar/plus-icon.png'
@@ -194,28 +194,28 @@ const MobileInterface = () => {
             </button>
           </div>
         </div>
-        <div className={`side-panel ${page ? 'hidden' : ''}`}>
+        <div className={`side-panel ${page ? 'hidden' : ''} w-40`}>
           <button
-            className='w-panel-item-brown silly-scale'
+            className='w-panel-item-brown silly-scale w-full'
             onClick={openBeesInventory}
           >
             <img
-              className='w-panel-icon'
+              className='sw-panel-icon sm:w-panel-icon'
               src='/images/icons/cupboard.png'
               alt='My bees'
             />
-            <OutlinedText className='w-panel-span' text={"My bees"}></OutlinedText>
+            <OutlinedText className='text-lg sm:text-xl w-panel-span' text={"My bees"}></OutlinedText>
           </button>
           <button
-            className='w-panel-item-green silly-scale'
+            className='w-panel-item-green silly-scale w-full'
             onClick={openStaking}
           >
             <img
-              className='w-panel-icon'
+              className='sw-panel-icon sm:w-panel-icon'
               src='/images/icons/bank.png'
               alt='Staking'
             />
-            <OutlinedText className='w-panel-span' text={"Staking"}></OutlinedText>
+            <OutlinedText className='text-lg sm:text-xl w-panel-span' text={"Staking"}></OutlinedText>
           </button>
         </div>
         <div className='bottom-navbar'>
